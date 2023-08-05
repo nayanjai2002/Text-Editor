@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<link rel="stylesheet" href="style.css">
+	<title>Text Editor</title>
+</head>
+<body>
+
+	<div class="container">
+		<div class="toolbar">
+			<div class="head">
+				<input type="text" placeholder="Filename" value="untitled" id="filename">
+				<select onchange="fileHandle(this.value); this.selectedIndex=0">
+					<option value="" selected="" hidden="" disabled="">File</option>
+					<option value="new">New file</option>
+					<option value="txt">Save as txt</option>
+					<option value="pdf">Save as pdf</option>
+				</select>
+				<select onchange="formatDoc('formatBlock', this.value); this.selectedIndex=0;">
+					<option value="" selected="" hidden="" disabled="">Format</option>
+					<option value="h1">Heading 1</option>
+					<option value="h2">Heading 2</option>
+					<option value="h3">Heading 3</option>
+					<option value="h4">Heading 4</option>
+					<option value="h5">Heading 5</option>
+					<option value="h6">Heading 6</option>
+					<option value="p">Paragraph</option>
+				</select>
+				<select onchange="formatDoc('fontSize', this.value); this.selectedIndex=0;">
+					<option value="" selected="" hidden="" disabled="">Font size</option>
+					<option value="1">Extra small</option>
+					<option value="2">Small</option>
+					<option value="3">Regular</option>
+					<option value="4">Medium</option>
+					<option value="5">Large</option>
+					<option value="6">Extra Large</option>
+					<option value="7">Big</option>
+				</select>
+                <select onchange="formatDoc('fontName', this.value); this.selectedIndex=0;">
+					<option value="" selected="" hidden="" disabled="">Fonts</option>
+					<option value="Arial">Arial</option>
+					<option value="Tiro Devanagari Hindi">Tiro Devanagari Hindi</option>
+					<option value="Anonymous Pro">Anonymous Pro</option>
+					<option value="Noto Sans Devanagari">Noto Sans Devanagari</option>
+					
+				</select>
+				<div class="color">
+					<span>Color</span>
+					<input type="color" oninput="formatDoc('foreColor', this.value); this.value='#000000';">
+				</div>
+				<div class="color">
+					<span>Background</span>
+					<input type="color" oninput="formatDoc('hiliteColor', this.value); this.value='#000000';">
+				</div>
+			</div>
+			<div class="btn-toolbar">
+				<button onclick="formatDoc('undo')"><i class='bx bx-undo' ></i></button>
+				<button onclick="formatDoc('redo')"><i class='bx bx-redo' ></i></button>
+				<button onclick="formatDoc('bold')"><i class='bx bx-bold'></i></button>
+				<button onclick="formatDoc('underline')"><i class='bx bx-underline' ></i></button>
+				<button onclick="formatDoc('italic')"><i class='bx bx-italic' ></i></button>
+				<button onclick="formatDoc('strikeThrough')"><i class='bx bx-strikethrough' ></i></button>
+                <button onclick="formatDoc('superscript')"><span class="material-symbols-outlined">superscript</span></button>
+                <button onclick="formatDoc('subscript')"><span class="material-symbols-outlined">subscript</span></button>
+        
+				<button onclick="formatDoc('justifyLeft')"><i class='bx bx-align-left' ></i></button>
+				<button onclick="formatDoc('justifyCenter')"><i class='bx bx-align-middle' ></i></button>
+				<button onclick="formatDoc('justifyRight')"><i class='bx bx-align-right' ></i></button>
+				<button onclick="formatDoc('justifyFull')"><i class='bx bx-align-justify' ></i></button>
+				<button onclick="formatDoc('insertOrderedList')"><i class='bx bx-list-ol' ></i></button>
+				<button onclick="formatDoc('insertUnorderedList')"><i class='bx bx-list-ul' ></i></button>
+				<button onclick="addLink()"><i class='bx bx-link' ></i></button>
+				<button onclick="formatDoc('unlink')"><i class='bx bx-unlink' ></i></button>
+                
+				<button id="show-code" data-active="false">&lt;/&gt;</button>
+			</div>
+		</div>
+		<div id="content" contenteditable="true" spellcheck="false">
+			इटली की फासीवादी आर्थिक नीति-
+अर्थव्यवस्था में फासीवादी हस्तक्षेप प्रतिष्ठा और सैन्य शक्ति को बढ़ावा देने के लिए किया गया था। 
+शुरुआती वर्षों में फासिस्टों ने व्यापारिक प्रतिष्ठानों के साथ समझौता किया और डूबते बैंकों को बचाया। हालाँकि, 1926 में राजनीतिक कारणों से लीरा का अचानक पुनर्मूल्यांकन किया गया,
+और इटली को अधिक मूल्य वाली मुद्रा के सभी सामान्य परिणाम भुगतने पड़े। निर्यात में तेजी से गिरावट आई, बेरोजगारी बढ़ी, 
+मजदूरी स्थिर कर दी गई या कटौती भी की गई और कीमतें गिर गईं। इस्पात, बिजली और रासायनिक उद्योगों का विस्तार हुआ, क्योंकि उनके बाज़ार घरेलू थे,
+और सस्ते कच्चे माल के आयात से उन्हें मदद मिली; कपड़ा, भोजन और वाहन बनाने वाले उद्योग, जो विदेशी बाजारों पर निर्भर थे, गिरावट आई।
+जब 1929 के बाद महामंदी आई, तो इन अपस्फीति प्रक्रियाओं पर जोर दिया गया, 
+हालाँकि सरकार ने रोजगार प्रदान करने के लिए सड़कों के निर्माण और कल्याण पर खर्च बढ़ा दिया। 
+अग्रणी बैंकों, जिन्होंने उद्योग को भारी ऋण दिया था, को 1930 के दशक की शुरुआत में बचाया जाना था, 
+जैसा कि कई बड़ी औद्योगिक कंपनियों को करना पड़ा था। दो नई राज्य- संचालित होल्डिंग कंपनियां,
+इटालियन इंडस्ट्रियल फाइनेंस इंस्टीट्यूट और इंस्टीट्यूट फॉर इंडस्ट्रियल रिकंस्ट्रक्शन की स्थापना विफल कंपनियों को बचाने और 
+नए औद्योगिक निवेश के लिए पूंजी प्रदान करने के लिए की गई थी; उन्होंने प्रशिक्षित प्रबंधक और प्रभावी वित्तीय पर्यवेक्षण भी प्रदान किया। इस प्रकार इटली ने एक विशाल,
+राज्य के नेतृत्व वाला औद्योगिक क्षेत्र हासिल कर लिया, जो विशेष रूप से बैंकिंग, इस्पात में महत्वपूर्ण था। शिपिंग, हथियार, और जलविद्युत की आपूर्ति।
+हालाँकि, इन फर्मों का राष्ट्रीयकरण नहीं किया गया था। इसके बजाय,उन्होंने निजी कंपनियों के रूप में बाज़ार में काम किया इसमें सड़कें और सस्ती ऊर्जा शामिल हैं -
+एक मजबूत वित्तीय क्षेत्र, और रसायन और सिंथेटिक फाइबर जैसे विस्तारित क्षेत्रों में कुछ कुशल आधुनिक उद्योग। सबसे अधिक औद्योगिक विकास, और सबसे अधिक
+
+		</div>
+	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="script.js"></script>
+</body>
+</html>
