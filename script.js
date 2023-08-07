@@ -63,12 +63,14 @@ function fileHandle(value) {
 	} else if(value === 'pdf') {
       opt = {
             margin:       0.5,
-            image:        { type: 'jpeg', quality: 0.98 },
+            image:        { type: 'jpeg', quality: 0.80 },
             html2canvas:  { scale: 2 },
             jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
           };
           html2pdf().set(opt).from(content).save(filename.value);
 		
+	} else if(value === 'print') {
+		window.print();
 	}
 
 }

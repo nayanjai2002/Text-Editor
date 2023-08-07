@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-
+@media print {
+	div *:not(#content):not(#content *) {
+		visibility: hidden;
+	}
+	#content {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
 * {
 	margin: 0;
 	padding: 0;
