@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+
 @media print {
 	div *:not(#content):not(#content *) {
 		visibility: hidden;
@@ -9,6 +10,8 @@
 		top: 0;
 		left: 0;
 	}
+	
+
 }
 * {
 	margin: 0;
@@ -119,10 +122,17 @@ a {
 	background: #f3f3f3;
 }
 #content {
+	
 	padding: 16px;
 	outline: none;
 	overflow: auto;
+	
+	
 }
 #show-code[data-active="true"] {
 	background: #eee;
+}
+div[contenteditable="true"]:empty:before {
+	content: attr(placeholder);
+	color: #aaa;
 }
