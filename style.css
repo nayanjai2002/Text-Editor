@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-
+ 
 @media print {
 	div *:not(#content):not(#content *) {
 		visibility: hidden;
@@ -11,7 +11,6 @@
 		left: 0;
 	}
 	
-
 }
 * {
 	margin: 0;
@@ -23,12 +22,23 @@
 }
 
 body {
-	background: #ddd;
+	background: linear-gradient(to right, #1e5799 0%, #2ce0bf 19%, #76dd2c 40%, #dba62b 60%, #e02cbf 83%, #1e5799 100%);
+	background-size: 10000px 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	animation: bg 15s linear infinite;
 	min-height: 100vh;
-}
+  }
+  
+  @keyframes bg {
+	0% {
+	  background-position-x: 0;
+	}
+	100% {
+	  background-position-x: 10000px;
+	}
+  }
 
 li {
 	margin-left: 16px;
@@ -121,18 +131,21 @@ a {
 .toolbar .btn-toolbar button:hover {
 	background: #f3f3f3;
 }
+
+
 #content {
-	
+
 	padding: 16px;
 	outline: none;
 	overflow: auto;
-	
-	
 }
+
 #show-code[data-active="true"] {
 	background: #eee;
 }
-div[contenteditable="true"]:empty:before {
-	content: attr(placeholder);
-	color: #aaa;
+
+
+div[contenteditable="true"]:empty::before {
+    content:attr(placeholder);
+    color:#aaa;
 }
