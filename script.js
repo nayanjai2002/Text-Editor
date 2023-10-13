@@ -45,7 +45,12 @@ showCode.addEventListener('click', function () {
 	}
 })
 
-
+document.getElementById('content').innerHTML = 
+localStorage['text'] || "" ;
+ setInterval(function() {
+	 localStorage['text'] = document.getElementById('content').innerHTML;
+ }, 1000);
+ 
 
 const filename = document.getElementById('filename');
 
